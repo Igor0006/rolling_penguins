@@ -165,14 +165,14 @@ public class GameScreen implements Screen {
         player_1.update();
 
         if(player_1.speed != 0.0 && !player_1.isMove) { player_1.speed -= 0.02; }
-        if(player_1.speed < 0.0){ player_1.speed = 0.0; }
+        if(player_1.speed < 0.0){ player_1.speed = 0.0f; }
 
 
         player_2.setDirection(joy_2.getDirection());
         player_2.update();
 
         if(player_2.speed != 0.0 && !player_2.isMove) { player_2.speed -= 0.02; }
-        if(player_2.speed < 0.0){ player_2.speed = 0.0; }
+        if(player_2.speed < 0.0){ player_2.speed = 0.0f; }
 
         if(player_1.finished || player_2.finished){
             if(player_1.finished){

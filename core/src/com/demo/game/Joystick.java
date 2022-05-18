@@ -10,7 +10,6 @@ public class Joystick {
     public float rcircle, rstick;
     public Point direction;
     private int pointer = -1;
-    private float length;
     private float dx;
     private float dy;
     public float dist;
@@ -40,7 +39,7 @@ public class Joystick {
             dx = circleBounds.pos.getX() - x;
             dy = circleBounds.pos.getY() - y;
         }
-        length = (float) Math.sqrt(dx * dx + dy * dy);
+        float length = (float) Math.sqrt(dx * dx + dy * dy);
         if(isDownTouch && circleBounds.isContains(x, y) && this.pointer == -1) this.pointer=pointer;
         if(circleBounds.Overlaps(stickBounds)&&isDownTouch&&this.pointer == pointer) {
             player.isMove = true;
