@@ -31,19 +31,12 @@ public class MapScreen implements Screen{
         preview_width = GameScreen.WIDTH - array_size * 2 - MainMenuScreen.distance * 2;
         preview_height = GameScreen.HEIGHT - MainMenuScreen.btn_height * 2;
 
-        Texture Image_up = new Texture("btns/resume_up.png");
+        Texture Image_up = new Texture("btns/array_left_up.png");
         TextureRegion myTextureRegion_up = new TextureRegion(Image_up);
         TextureRegionDrawable myTexRegionDrawable_up = new TextureRegionDrawable(myTextureRegion_up);
-        Texture Image_down = new Texture("btns/resume_down.png");
+        Texture Image_down = new Texture("btns/array_left_down.png");
         TextureRegion myTextureRegion_down = new TextureRegion(Image_down);
         TextureRegionDrawable myTexRegionDrawable_down = new TextureRegionDrawable(myTextureRegion_down);
-
-        Image_up = new Texture("btns/array_left_up.png");
-        myTextureRegion_up = new TextureRegion(Image_up);
-        myTexRegionDrawable_up = new TextureRegionDrawable(myTextureRegion_up);
-        Image_down = new Texture("btns/array_left_down.png");
-        myTextureRegion_down = new TextureRegion(Image_down);
-        myTexRegionDrawable_down = new TextureRegionDrawable(myTextureRegion_down);
         btn_left = new ImageButton(myTexRegionDrawable_up, myTexRegionDrawable_down);
         btn_left.setSize(array_size, array_size);
         btn_left.setPosition(0, GameScreen.HEIGHT / 2 - array_size / 2);
