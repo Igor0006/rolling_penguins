@@ -96,8 +96,8 @@ public class Player{
 
         width = (int) (tileWidth * 2 * k_x);
         height = (int) (tileHeight * 2 * k_y);
-        w_half = width / 2;
-        h_half = height / 2;
+        w_half = width / 2 * 0.6f;
+        h_half = height / 2 * 0.6f;
         tile_k_x = tileWidth * k_x;
         tile_k_y = tileWidth * k_y;
 
@@ -120,7 +120,7 @@ public class Player{
         else{
             currentFrame = (TextureRegion) moveAnimation.getKeyFrame(stateTime, true);
         }
-        batch.draw(currentFrame, pos.getX(), pos.getY(), w_half, h_half, width,  height, 1, 1, angle);
+        batch.draw(currentFrame, pos.getX(), pos.getY(), width / 2, height / 2, width,  height, 1, 1, angle);
     }
 
     public void reset(){
@@ -152,23 +152,23 @@ public class Player{
     }
 
     public void update() {
-        if (dead){ angle = 0;speed = 0; }
+        if (dead){ angle = 0; speed = 0; }
         pos.add(direction.getX() * speed * k, direction.getY() * speed * k);
-        float x = pos.getX();
-        float y = pos.getY();
+        float x = pos.getX() + w_half;
+        float y = pos.getY() + h_half;
         float w_cos = (float) (w_half * Math.cos(angle));
         float w_sin = (float) (w_half * Math.sin(angle));
         float h_cos = (float) (h_half * Math.cos(angle));
         float h_sin = (float) (h_half * Math.sin(angle));
         collision_id = collisionDetect(x, y);
         if(collision_id == NONE_ID){
-            collision_id = collisionDetect((- w_cos - h_sin + x + w_half), (- w_sin + h_cos + y + h_half));
+            collision_id = collisionDetect((- w_cos - h_sin + x), (- w_sin + h_cos + y));
         }
         if(collision_id == NONE_ID){
-            collision_id = collisionDetect((w_cos - h_sin + x + w_half), (w_sin + h_cos + y + h_half));
+            collision_id = collisionDetect((w_cos - h_sin + x), (w_sin + h_cos + y));
         }
         if(collision_id == NONE_ID){
-            collision_id = collisionDetect((w_cos + h_cos + x + w_half), (w_sin - h_cos + y + h_half));
+            collision_id = collisionDetect((w_cos + h_cos + x), (w_sin - h_cos + y));
         }
         if(collision_id == BARRIER_ID && !dead){ dead = true;countTime = stateTime; dead_sound.play();}
     }
